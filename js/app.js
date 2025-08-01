@@ -17,7 +17,10 @@ searchForm.addEventListener('submit', (event) => {
 });
 
 async function getWeather(city) {
+    weatherInfoContainer.classList.remove('show');
     weatherInfoContainer.innerHTML = `<p>Fetching data...</p>`;
+    void weatherInfoContainer.offsetWidth; // force reflow to re-trigger animation
+
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=en`;
 
     try {
@@ -29,6 +32,7 @@ async function getWeather(city) {
         displayWeather(data);
     } catch (error) {
         weatherInfoContainer.innerHTML = `<p class="error">${error.message}</p>`;
+        weatherInfoContainer.classList.add('show');
     }
 }
 
@@ -44,5 +48,24 @@ function displayWeather(data) {
         <p>${description}</p>
         <p>Humidity: ${humidity}%</p>
     `;
+    
     weatherInfoContainer.innerHTML = weatherHtml;
+
+    
+    const container = document.querySelector('.app-container');
+    container.classList.remove('cold', 'mild', 'hot');
+
+    // Set background based on temp
+    if (temp < 10) {
+        container.classList.add('cold');
+    } else if (temp >= 10 && temp <= 25) {
+        container.classList.add('mild');
+    } else {
+        container.classList.add('hot');
+    }
+
+    // Trigger reflow to restart animation
+    setTimeout(() => {
+        weatherInfoContainer.classList.add('show');
+    }, 10);
 }
