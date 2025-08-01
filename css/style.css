@@ -67,3 +67,20 @@ h1 { color: #ffffff; }
     background: linear-gradient(180deg, #ff512f, #dd2476); /* hot red/orange */
 }
 
+.forecast-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.forecast-item {
+    background: rgba(255,255,255,0.1);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 60px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
