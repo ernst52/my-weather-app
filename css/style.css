@@ -56,31 +56,38 @@ h1 { color: #ffffff; }
 
 /* Add dynamic background classes */
 .cold {
-    background: linear-gradient(180deg, #3a7bd5, #00d2ff); /* icy blue */
+    background: linear-gradient(180deg, #3a7bd5, #00d2ff); 
 }
 
 .mild {
-    background: linear-gradient(180deg, #4f5bb7, #45b2cd); /* default blend */
+    background: linear-gradient(180deg, #4f5bb7, #45b2cd); /
 }
 
 .hot {
-    background: linear-gradient(180deg, #ff512f, #dd2476); /* hot red/orange */
+    background: linear-gradient(180deg, #ff512f, #dd2476);
 }
 
 .forecast-container {
     display: flex;
-    justify-content: space-between;
     gap: 0.5rem;
     margin-top: 1rem;
-    flex-wrap: wrap;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin; 
+    scrollbar-color: #c6dbe7 rgba(240, 233, 233, 0.2);
 }
 
 .forecast-item {
+    flex: 0 0 auto;
+    min-width: 60px;
     background: rgba(255,255,255,0.1);
     border-radius: 0.5rem;
     padding: 0.5rem;
-    width: 60px;
     text-align: center;
     font-size: 0.9rem;
+}
+
+#weather-info-container {
+    overflow-x: auto;
 }
 
